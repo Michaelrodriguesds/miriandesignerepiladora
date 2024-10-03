@@ -8,7 +8,7 @@ const Offers = () => {
   // Função para buscar ofertas
   const fetchOffers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/public/offers');
+      const response = await fetch('https://backende-deploy.onrender.com/api/public/offers');
       if (!response.ok) {
         throw new Error('Erro ao buscar ofertas');
       }

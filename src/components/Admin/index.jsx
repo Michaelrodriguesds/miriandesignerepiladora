@@ -26,7 +26,7 @@ const Admin = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:5000/api/admin/login', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -65,17 +65,17 @@ const Admin = () => {
       const token = localStorage.getItem('token');
       const headers = { 'Authorization': `Bearer ${token}` };
 
-      const offersRes = await fetch('http://localhost:5000/api/public/offers', { headers });
+      const offersRes = await fetch('https://backende-deploy.onrender.com/api/public/offers', { headers });
       if (!offersRes.ok) throw new Error('Erro ao buscar ofertas');
       const offersData = await offersRes.json();
       setOffers(offersData);
 
-      const proceduresRes = await fetch('http://localhost:5000/api/public/procedures', { headers });
+      const proceduresRes = await fetch('https://backende-deploy.onrender.com/api/public/procedures', { headers });
       if (!proceduresRes.ok) throw new Error('Erro ao buscar procedimentos');
       const proceduresData = await proceduresRes.json();
       setProcedures(proceduresData);
 
-      const messagesRes = await fetch('http://localhost:5000/api/admin/messages', { headers });
+      const messagesRes = await fetch('https://backende-deploy.onrender.com/api/admin/messages', { headers });
       if (!messagesRes.ok) throw new Error('Erro ao buscar mensagens');
       const messagesData = await messagesRes.json();
       setMessages(messagesData);
@@ -93,7 +93,7 @@ const Admin = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/offer', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/offer', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(newOffer),
@@ -115,7 +115,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/offer/${id}`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/offer/${id}`, {
         method: 'DELETE',
         headers: headers,
       });
@@ -141,7 +141,7 @@ const Admin = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/procedure', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/procedure', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(newProcedure),
@@ -163,7 +163,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/procedure/${id}`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/procedure/${id}`, {
         method: 'DELETE',
         headers: headers,
       });
@@ -185,7 +185,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/message/${id}/approve`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/message/${id}/approve`, {
         method: 'PUT',
         headers: headers,
       });
@@ -210,7 +210,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/message/${id}`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/message/${id}`, {
         method: 'DELETE',
         headers: headers,
       });
@@ -234,7 +234,7 @@ const Admin = () => {
     };
   
     try {
-      const response = await fetch('http://localhost:5000/api/admin/message', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/message', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(newMessage),
