@@ -1,0 +1,40 @@
+/* Reset básico para tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Para evitar espaçamento entre bordas */
+}
+
+thead {
+  background-color: #5D3FD3; /* Cor de fundo do cabeçalho */
+  color: white; /* Cor do texto do cabeçalho */
+}
+
+th, td {
+  padding: 12px; /* Adicionando espaçamento */
+  text-align: left; /* Alinhamento à esquerda do texto */
+  border-bottom: 1px solid #ddd; /* Linha de separação entre as linhas */
+}
+
+th {
+  font-size: 1.2em; /* Aumentando o tamanho da fonte do cabeçalho */
+  font-weight: bold; /* Deixando o texto em negrito */
+}
+
+tbody tr:hover {
+  background-color: rgba(93, 63, 211, 0.1); /* Mudança de cor ao passar o mouse */
+}
+
+.procedures-container {
+  max-width: 1200px; /* Largura máxima do container */
+  margin: 20px auto; /* Centralizando o container */
+  padding: 20px; /* Adicionando espaço interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+  background-color: #ffffff; /* Cor de fundo do container */
+}
+
+h2 {
+  text-align: center; /* Centralizando o título */
+  color: #5D3FD3; /* Cor do texto do título, consistente com a paleta de cores */
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+}

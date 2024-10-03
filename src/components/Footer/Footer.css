@@ -1,0 +1,81 @@
+/* Footer.css */
+
+.footer-container {
+  background-color: #222; /* Fundo escuro suave */
+  color: #ccc; /* Texto mais claro para contraste */
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-info, .footer-contact, .footer-developer {
+  flex: 1;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.footer-info a, .footer-contact a, .footer-developer a {
+  color: #ccc; /* Links em cinza claro */
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-info a:hover, .footer-contact a:hover, .footer-developer a:hover {
+  color: #fff; /* Links mudam para branco ao passar o mouse */
+}
+
+.footer-contact a, .footer-developer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espaço entre ícone e texto */
+  font-size: 14px;
+}
+
+.footer-info .admin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Pequeno espaço entre o ícone e o texto */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.footer-container p {
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.admin-link {
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.admin-link:hover {
+  color: #fff;
+}
+
+/* Seção de direitos reservados na última linha */
+.footer-rights {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-info, .footer-contact, .footer-developer {
+    margin: 5px 0;
+  }
+}

@@ -1,0 +1,120 @@
+.header {
+  background-color: #f8f8f8; /* Cor de fundo mais suave */
+  color: #333; /* Texto em um tom escuro suave */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  width: 50px; /* Ajuste conforme necessário */
+  height: auto;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.title {
+  margin: 0 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: #007BFF; /* Azul suave para links */
+  text-decoration: none;
+  cursor: pointer; /* Adiciona o cursor de mãozinha */
+  transition: color 0.3s ease; /* Transição suave para links */
+}
+
+.nav-links a:hover {
+  color: #0056b3; /* Cor ao passar o mouse */
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #333; /* Cor do ícone do menu */
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px; /* Ajuste conforme necessário */
+    left: 0;
+    background-color: #f8f8f8; /* Cor de fundo mais suave */
+  }
+
+  .nav-open {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Estilo do botão de scroll para o topo */
+.scroll-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #007BFF; /* Cor primária para o botão */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Ficar acima de outros elementos */
+}
+
+.scroll-to-top:hover {
+  background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+}
+
+.scroll-to-top svg {
+  font-size: 24px;
+}

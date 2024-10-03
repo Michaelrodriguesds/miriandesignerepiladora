@@ -1,0 +1,50 @@
+.gallery-container {
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #f8f9fa, #e2e6ea); /* Gradiente suave para o fundo */
+  border-radius: 15px; /* Bordas arredondadas */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor */
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.gallery-item {
+  cursor: pointer;
+  transition: transform 0.3s; /* Efeito de transição suave */
+}
+
+.gallery-item:hover {
+  transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+.gallery-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ddd; /* Borda leve para as imagens */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para as imagens */
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte para a imagem da lightbox */
+}

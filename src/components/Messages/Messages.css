@@ -1,0 +1,98 @@
+.messages-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff; /* Cor de fundo mais clara */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+}
+
+.carousel {
+  margin-bottom: 20px;
+}
+
+.message-content {
+  margin-bottom: 10px;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-controls button {
+  background-color: #5D3FD3; /* Cor da paleta profissional */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.carousel-controls button:hover {
+  background-color: #4a2cb5; /* Tom mais escuro ao passar o mouse */
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-form input,
+.message-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.message-form input:focus,
+.message-form textarea:focus {
+  border: 1px solid #5D3FD3; /* Cor da borda ao focar */
+  outline: none; /* Remove contorno padrão */
+}
+
+.message-form button {
+  background-color: #28a745; /* Cor do botão de envio */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.message-form button:hover {
+  background-color: #218838; /* Tom mais escuro ao passar o mouse */
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  font-size: 30px; /* Tamanho padrão das estrelas selecionadas */
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.star.selected {
+  transform: scale(1.2); /* Aumenta as estrelas selecionadas */
+  color: #FFD700; /* Cor das estrelas selecionadas */
+}
+
+.star.unselected {
+  font-size: 20px; /* Tamanho das estrelas não selecionadas */
+  color: #ccc; /* Cor das estrelas não selecionadas */
+}
+
+.feedback {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #28a745; /* Cor verde para feedback */
+}

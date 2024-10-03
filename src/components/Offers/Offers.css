@@ -1,0 +1,87 @@
+.offers-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa, #e6e9f0); /* Gradiente suave de fundo */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  color: #333; /* Cor do texto mais escura e suave */
+  text-align: center;
+}
+
+.offers-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #5D3FD3; /* Cor profissional para o título */
+}
+
+.offer-card {
+  background-color: rgba(255, 255, 255, 0.9); /* Fundo do cartão mais suave */
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para o cartão */
+}
+
+.offer-card:hover {
+  transform: scale(1.02); /* Suavização do efeito de hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra mais forte no hover */
+}
+
+.flash-sale {
+  border: 2px solid #4caf50; /* Borda verde suave para ofertas relâmpago */
+  animation: pulse 1s infinite; /* Animação de pulsar */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.offer-title {
+  font-size: 1.8em;
+  margin: 10px 0;
+  color: #5D3FD3; /* Cor profissional para o título da oferta */
+}
+
+.offer-price {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #333; /* Cor do preço mais escura */
+}
+
+.offer-expiration-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.clock-icon, .bolt-icon {
+  margin-right: 5px;
+  font-size: 1.5em;
+  color: #4caf50; /* Cor do ícone suave */
+}
+
+.offer-expiration {
+  font-size: 1.2em;
+}
+
+.flash-sale-time {
+  color: #4caf50; /* Cor verde suave para o tempo de ofertas relâmpago */
+  font-weight: bold;
+}
+
+.no-offers {
+  font-size: 1.5em;
+  color: #555; /* Cor suave para a mensagem sem ofertas */
+}

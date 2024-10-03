@@ -1,0 +1,122 @@
+/* Reset básico para remover margens, paddings, e bordas padrões dos elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove as decorações e underline dos links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reseta lista (ul, ol) */
+ul, ol {
+  list-style: none;
+}
+
+/* Reseta os campos de formulário */
+input, button, textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Remove a aparência padrão dos botões */
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+/* Ajustes de corpo */
+body {
+  font-family: 'Poppins', sans-serif; /* Fonte mais estilizada */
+  line-height: 1.6;
+  background-color: #f9f9f9; /* Fundo mais suave */
+  color: #333;
+}
+
+/* Imagens sempre ocupam seu container */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Definindo uma altura mínima para o body para ocupar toda a viewport */
+html, body {
+  height: 100%;
+}
+
+/* Container principal (opcional) */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Ajusta o texto */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Estilo para inputs e áreas de texto */
+input, textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0; /* Bordas mais suaves */
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #007BFF; /* Mudança de cor ao focar */
+}
+
+/* Estilo para botões */
+button {
+  background-color: #007BFF; /* Cor primária */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Adiciona transformação */
+}
+
+button:hover {
+  background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+  transform: scale(1.05); /* Leve aumento no botão */
+}
+
+/* Rodapé */
+footer {
+  background-color: #222; /* Cor de fundo do rodapé */
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Adicionando classes para estilizar elementos de forma mais específica */
+.header, .offers-title, .certificado-section h3 {
+  color: #007BFF; /* Cor suave e bonita para títulos */
+}
+
+/* Sombra leve para cartões */
+.offer-card, .certificado-img {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: box-shadow 0.3s ease;
+}
+
+.offer-card:hover, .certificado-img:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Sombra mais intensa ao passar o mouse */
+}
+
+/* Outros ajustes para uniformidade e elegância */
+.lightbox, .modal {
+  border-radius: 10px; /* Bordas arredondadas */
+}

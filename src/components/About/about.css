@@ -1,0 +1,71 @@
+.sobre-section {
+  position: relative;
+  background-image: url('../../assets/sobre_2.jpg');
+  background-size: 130%; /* Aumentando um pouco o tamanho para garantir que a parte superior apareça */
+  background-position: center 10%; /* Ajustando para garantir que a parte superior da imagem fique visível */
+  background-repeat: no-repeat; /* Evita repetição da imagem */
+  background-attachment: fixed; /* Efeito de parallax */
+  padding: 100px 20px;
+  color: #fff; /* Texto branco */
+  text-align: center;
+  min-height: 100vh; /* Altura mínima para garantir que a imagem ocupe toda a tela */
+}
+
+.sobre-content {
+  background: rgba(0, 0, 0, 0.6); /* Fundo preto com transparência */
+  padding: 50px;
+  border-radius: 15px; /* Cantos mais arredondados */
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra para profundidade */
+}
+
+.sobre-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif; /* Fonte mais adequada */
+  color: #ffd700; /* Cor dourada para destaque */
+}
+
+.sobre-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #e0e0e0; /* Um cinza claro para o texto */
+  text-align: justify; /* Justifica o texto para um visual mais elegante */
+  margin-bottom: 20px; /* Adiciona espaçamento abaixo do parágrafo */
+}
+
+/* Estilos para o botão, se houver */
+.sobre-button {
+  background-color: #007BFF; /* Azul suave */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.sobre-button:hover {
+  background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+  .sobre-text h2 {
+    font-size: 2rem; /* Tamanho menor no mobile */
+  }
+
+  .sobre-text p {
+    font-size: 1rem; /* Tamanho menor no mobile */
+  }
+
+  .sobre-content {
+    padding: 30px; /* Menos padding em telas menores */
+  }
+
+  .sobre-section {
+    padding: 80px 10px; /* Ajuste no padding para telas menores */
+    background-size: 100%; /* Reduz o tamanho para mobile */
+  }
+}
