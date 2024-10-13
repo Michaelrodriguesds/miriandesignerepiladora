@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react'; 
-import './header.css';
-import logo from '../../assets/logo.png'; // Substitua pelo caminho correto da sua imagem
-import { FaArrowUp } from 'react-icons/fa'; // Ícone de seta para cima
+import './header.css'; // O CSS global deve incluir os estilos para os botões
+import logo from '../../assets/logo.png'; 
+import { FaArrowUp, FaWhatsapp } from 'react-icons/fa'; // Ícones
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
-  let scrollTimer = null;
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Função para rolar suavemente para a seção desejada
   const handleScrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -21,25 +19,20 @@ const Header = () => {
     }
   };
 
-  // Função para rolar para o topo da página
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Monitora o scroll para exibir ou ocultar o botão
-  const handleScroll = () => {
-    if (scrollTimer) {
-      clearTimeout(scrollTimer);
-    }
-
-    setShowScrollButton(false); // Esconde o botão enquanto o usuário está rolando
-
-    scrollTimer = setTimeout(() => {
-      setShowScrollButton(true); // Mostra o botão após parar de rolar
-    }, 1500); // Mostra o botão após 1.5 segundos de inatividade
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      // Mostrar ou esconder os botões dependendo da posição de rolagem
+      if (window.scrollY > 300) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -67,7 +60,7 @@ const Header = () => {
             <li><a onClick={() => handleScrollToSection('procedures')}>Procedimentos</a></li>
             <li><a onClick={() => handleScrollToSection('offers')}>Ofertas</a></li>
             <li><a onClick={() => handleScrollToSection('messages')}>Recados</a></li>
-            <li><a onClick={() => handleScrollToSection('footer')}>Contato</a></li> {/* Contato rola para o footer */}
+            <li><a onClick={() => handleScrollToSection('footer')}>Contato</a></li> 
           </ul>
         </nav>
         <button className="menu-toggle" onClick={handleMenuToggle}>
@@ -75,10 +68,17 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Botão de scroll para o topo */}
+      {/* Botão de scroll para o topo, exibido apenas se showScrollButton for true */}
       {showScrollButton && (
-        <button className="scroll-to-top" onClick={scrollToTop}>
+        <button className="scroll-to-top show" onClick={scrollToTop}>
           <FaArrowUp />
+        </button>
+      )}
+
+      {/* Botão do WhatsApp, exibido apenas se showScrollButton for true */}
+      {showScrollButton && (
+        <button className="whatsapp-button show" onClick={() => window.open('https://wa.me/5521970259065', '_blank')}>
+          <FaWhatsapp />
         </button>
       )}
     </header>

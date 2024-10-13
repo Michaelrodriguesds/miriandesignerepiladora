@@ -1,100 +1,70 @@
-.admin-panel {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
-
-.login-container {
-  max-width: 400px;
+.admin-login,
+.admin-dashboard {
+  max-width: 600px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #f9f9f9;
 }
 
-.login-form h2 {
-  text-align: center;
+h2 {
+  color: #333;
 }
 
-.login-form input {
+input,
+textarea,
+button {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ccc;
   border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
-.login-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
+button {
+  background-color: #4CAF50; /* Verde padrão */
   color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s; /* Transição suave para a cor do botão */
 }
 
-.login-button:hover {
-  background-color: #218838; /* Cor de hover para o botão de login */
+button:hover {
+  background-color: #45a049; /* Tom mais escuro ao passar o mouse */
 }
 
-.dashboard {
-  margin-top: 20px;
+/* Estilo para o botão aprovado */
+.button-approved {
+  background-color: #007BFF; /* Azul quando aprovado */
+  color: white; /* Mantém o texto branco */
 }
 
-.dashboard h2 {
-  margin-top: 20px;
+.button-approved:hover {
+  background-color: #0056b3; /* Tom mais escuro quando passar o mouse sobre o botão aprovado */
 }
 
-.dashboard form {
+.admin-forms {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
-.dashboard form input {
-  margin-bottom: 10px;
+.admin-lists {
+  margin-top: 20px;
 }
 
-.dashboard ul {
+.admin-lists ul {
   list-style-type: none;
   padding: 0;
 }
 
-.dashboard li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.admin-lists li {
+  background: #eee;
+  padding: 10px;
   margin: 5px 0;
-  padding: 5px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #ffffff; /* Cor de fundo das listas */
 }
 
-.dashboard li:hover {
-  background-color: #f1f1f1; /* Efeito hover nas mensagens */
-}
-
-.dashboard button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dashboard button:hover {
-  background-color: #0056b3;
-}
-
-.toast-container {
-  z-index: 9999; /* Garante que as notificações fiquem acima de outros elementos */
-}
-
-.message-approved {
-  background-color: #e0ffe0; /* Verde claro */
-  transition: background-color 0.3s ease; /* Transição suave */
+.approved {
+  background-color: #dff0d8; /* Cor de fundo das mensagens aprovadas */
 }
