@@ -1,4 +1,4 @@
-.messages-container {
+.messages-container { 
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
@@ -19,6 +19,7 @@
 .carousel-controls {
   display: flex;
   justify-content: space-between;
+  gap: 10px; /* Adiciona espaçamento entre os botões */
 }
 
 .carousel-controls button {
@@ -57,7 +58,7 @@
 }
 
 .message-form button {
-  background-color: #28a745; /* Cor do botão de envio */
+  background-color: #28a745; /* Verde */
   color: white;
   border: none;
   border-radius: 5px;
@@ -67,28 +68,39 @@
 }
 
 .message-form button:hover {
-  background-color: #218838; /* Tom mais escuro ao passar o mouse */
+  background-color: #218838; /* Tom mais escuro de verde */
 }
 
+/* Ajustes para o sistema de classificação por estrelas */
 .star-rating {
   display: flex;
   align-items: center;
 }
 
 .star {
-  font-size: 30px; /* Tamanho padrão das estrelas selecionadas */
-  cursor: pointer;
-  transition: transform 0.3s;
+  font-size: 30px; /* Tamanho padrão das estrelas */
+  cursor: pointer; /* Cursor padrão para estrelas selecionáveis */
+  color: #ccc; /* Cor das estrelas inicialmente invisíveis ou não selecionadas */
+  transition: transform 0.3s, color 0.3s; /* Suave transição de tamanho e cor */
 }
 
 .star.selected {
-  transform: scale(1.2); /* Aumenta as estrelas selecionadas */
-  color: #FFD700; /* Cor das estrelas selecionadas */
+  color: #FFD700; /* Amarelo para as estrelas selecionadas */
+  transform: scale(1.2); /* Aumenta o tamanho das estrelas selecionadas */
 }
 
 .star.unselected {
-  font-size: 20px; /* Tamanho das estrelas não selecionadas */
-  color: #ccc; /* Cor das estrelas não selecionadas */
+  color: rgba(255, 255, 255, 0.5); /* Cor cinza claro para as estrelas não selecionadas */
+}
+
+/* Adicionando classe para estrelas exibidas na seção de comentários */
+.stars {
+  cursor: default; /* Define cursor como padrão para as estrelas dos comentários */
+}
+
+/* Para as estrelas exibidas na seção de comentários, desativa o ponteiro */
+.stars .star {
+  cursor: default; /* Impede que o cursor mude para mão */
 }
 
 .feedback {

@@ -8,13 +8,12 @@ const Messages = () => {
   const [newName, setNewName] = useState('');
   const [newStars, setNewStars] = useState(1);
   const [feedback, setFeedback] = useState('');
-  const [intervalTime, setIntervalTime] = useState(5000); // Tempo padrão de intervalo em milissegundos
   const timerRef = useRef(null);
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch('https://backende-deploy.onrender.com/api/public/messages');
+        const response = await fetch('http://localhost:5000/api/public/messages');
         if (!response.ok) {
           throw new Error('Erro ao buscar mensagens');
         }
@@ -54,7 +53,7 @@ const Messages = () => {
   const handleAddMessage = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://backende-deploy.onrender.com/api/public/messages', {
+      const response = await fetch('http://localhost:5000/api/public/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: newMessage, name: newName, stars: newStars }),
@@ -100,6 +99,11 @@ const Messages = () => {
     return stars;
   };
 
+  const renderCommentStars = (num) => {
+    // Renderiza apenas as estrelas selecionadas
+    return renderStars(num, false).filter((_, index) => index < num);
+  };
+
   return (
     <div id="messages" className="messages-container">
       <div className="carousel">
@@ -109,7 +113,9 @@ const Messages = () => {
             <div className="message-content">
               <h3>{messages[currentMessageIndex].name}</h3>
               <p>{messages[currentMessageIndex].content}</p>
-              <p className="stars">{renderStars(messages[currentMessageIndex].stars, false)}</p>
+              <p className="stars">
+                {renderCommentStars(messages[currentMessageIndex].stars)} {/* Exibe apenas as estrelas deixadas pelo usuário */}
+              </p>
             </div>
             <div className="carousel-controls">
               <button onClick={handlePrevious}>Anterior</button>
