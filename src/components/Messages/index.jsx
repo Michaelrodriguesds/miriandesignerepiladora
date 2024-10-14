@@ -13,7 +13,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/public/messages');
+        const response = await fetch('https://backende-deploy.onrender.com/api/public/messages');
         if (!response.ok) {
           throw new Error('Erro ao buscar mensagens');
         }
@@ -53,7 +53,7 @@ const Messages = () => {
   const handleAddMessage = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/public/messages', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/public/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: newMessage, name: newName, stars: newStars }),
