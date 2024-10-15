@@ -106,10 +106,10 @@ const Procedures = () => {
               <td>R$ {procedure.price.toFixed(2)}</td>
               <td>
                 <img 
-                  src={procedure.image || 'img_procedimentos/default.png'} 
+                  src={`https://backende-deploy.onrender.com${procedure.image}` || 'img_procedimentos/default.png'} 
                   alt={procedure.name} 
                   className="procedure-image"
-                  onClick={() => openModal(procedure.image || 'img_procedimentos/default.png')}
+                  onClick={() => openModal(`https://backende-deploy.onrender.com${procedure.image}` || 'img_procedimentos/default.png')}
                 />
               </td>
             </tr>
