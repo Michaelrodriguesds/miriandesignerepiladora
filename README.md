@@ -3,7 +3,7 @@
 Este projeto é um site de serviços de estética que exibe preços e detalhes de procedimentos como **depilação**, **design de sobrancelhas** e **cílios**. Ele foi desenvolvido com **React** utilizando o **Vite** e se comunica com um backend Node.js/Express integrado ao **MongoDB Cloud**.
 
 ## 🌐 Link do Projeto Online
-- **[Frontend Estética e Beleza]([https://frontendweb-pqt2s8bpc-michaelrodriguesds-projects.vercel.app/](https://miriandesignerepiladora.onrender.com/))**
+- **[Frontend Estética e Beleza] (https://miriandesignerepiladora.onrender.com/)**
 - **[Repositório do Backend](https://github.com/Michaelrodriguesds/backende-Deploy)**
 
 ## 🚀 Objetivo do Projeto
