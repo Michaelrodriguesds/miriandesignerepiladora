@@ -150,7 +150,7 @@ const Procedures = () => {
               <button onClick={zoomIn}>+</button>
             </div>
           </div>
-        </div>
+        </div>    
       )}
     </div>
   );
