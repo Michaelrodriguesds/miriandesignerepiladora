@@ -1,70 +1,84 @@
-.admin-login,
-.admin-dashboard {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+/* Admin.css */
+
+/* Estilizando o container principal */
+.admin-container {
+  max-width: 800px;  /* Largura máxima do container */
+  margin: 0 auto;    /* Centraliza o container na tela */
+  padding: 20px;     /* Adiciona espaçamento interno */
+  font-family: 'Arial', sans-serif;  /* Fonte padrão */
+  background-color: #f9f9f9;  /* Cor de fundo clara */
+  border-radius: 8px;  /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Sombra suave */
 }
 
-h2 {
-  color: #333;
+/* Estilizando os títulos */
+h1, h2 {
+  color: #333;  /* Cor escura para os títulos */
 }
 
-input,
-textarea,
+/* Estilizando os formulários */
+form {
+  display: flex;  /* Usa flexbox para organizar os campos */
+  flex-direction: column;  /* Alinha os campos verticalmente */
+  margin-bottom: 20px;  /* Espaçamento abaixo dos formulários */
+}
+
+/* Estilizando os campos de entrada */
+input {
+  padding: 10px;  /* Espaçamento interno nos campos */
+  margin: 5px 0;  /* Margem entre os campos */
+  border: 1px solid #ccc;  /* Borda leve */
+  border-radius: 4px;  /* Bordas arredondadas */
+  font-size: 16px;  /* Tamanho da fonte */
+}
+
+/* Estilizando os botões */
 button {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-}
-
-button {
-  background-color: #4CAF50; /* Verde padrão */
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Transição suave para a cor do botão */
+  padding: 10px;  /* Espaçamento interno no botão */
+  background-color: #4CAF50;  /* Cor de fundo verde */
+  color: white;  /* Cor do texto */
+  border: none;  /* Remove bordas */
+  border-radius: 4px;  /* Bordas arredondadas */
+  cursor: pointer;  /* Muda o cursor ao passar o mouse */
+  font-size: 16px;  /* Tamanho da fonte */
+  transition: background-color 0.3s;  /* Efeito de transição */
 }
 
 button:hover {
-  background-color: #45a049; /* Tom mais escuro ao passar o mouse */
+  background-color: #45a049;  /* Cor de fundo ao passar o mouse */
 }
 
-/* Estilo para o botão aprovado */
-.button-approved {
-  background-color: #007BFF; /* Azul quando aprovado */
-  color: white; /* Mantém o texto branco */
+/* Estilizando as listas */
+ul {
+  list-style-type: none;  /* Remove marcadores padrão */
+  padding: 0;  /* Remove espaçamento interno */
 }
 
-.button-approved:hover {
-  background-color: #0056b3; /* Tom mais escuro quando passar o mouse sobre o botão aprovado */
+li {
+  background-color: #fff;  /* Cor de fundo branca */
+  padding: 10px;  /* Espaçamento interno nas listas */
+  margin: 5px 0;  /* Margem entre os itens */
+  border: 1px solid #ddd;  /* Borda leve */
+  border-radius: 4px;  /* Bordas arredondadas */
+  display: flex;  /* Usa flexbox para alinhar o conteúdo */
+  justify-content: space-between;  /* Espaça os itens uniformemente */
+  align-items: center;  /* Centraliza verticalmente */
 }
 
-.admin-forms {
-  display: flex;
-  flex-direction: column;
+/* Estilizando os botões dentro da lista */
+li button {
+  background-color: #f44336;  /* Cor de fundo vermelha para os botões de excluir */
 }
 
-.admin-lists {
-  margin-top: 20px;
+li button:hover {
+  background-color: #d32f2f;  /* Cor de fundo ao passar o mouse */
 }
 
-.admin-lists ul {
-  list-style-type: none;
-  padding: 0;
+/* Estilo para mensagens de sucesso e erro */
+.Toastify__toast--success {
+  background-color: #4CAF50;  /* Cor verde para mensagens de sucesso */
 }
 
-.admin-lists li {
-  background: #eee;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-}
-
-.approved {
-  background-color: #dff0d8; /* Cor de fundo das mensagens aprovadas */
+.Toastify__toast--error {
+  background-color: #f44336;  /* Cor vermelha para mensagens de erro */
 }

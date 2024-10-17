@@ -16,7 +16,7 @@ const Procedures = () => {
   useEffect(() => {
     const fetchProcedures = async () => {
       try {
-        const response = await fetch('https://backende-deploy.onrender.com/api/public/procedures');
+        const response = await fetch('http://localhost:5000/api/public/procedures');
         if (!response.ok) {
           throw new Error('Erro ao buscar dados do servidor');
         }
@@ -106,10 +106,14 @@ const Procedures = () => {
               <td>R$ {procedure.price.toFixed(2)}</td>
               <td>
                 <img 
-                  src={`https://backende-deploy.onrender.com${procedure.image}` || 'img_procedimentos/default.png'} 
+                  src={procedure.image ? procedure.image : '/img_procedimentos/default.png'} // Verifica se a imagem existe, caso contrário usa a imagem padrão
                   alt={procedure.name} 
                   className="procedure-image"
-                  onClick={() => openModal(`https://backende-deploy.onrender.com${procedure.image}` || 'img_procedimentos/default.png')}
+                  onError={(e) => {
+                    e.target.onerror = null; // Evitar loop infinito
+                    e.target.src = '/img_procedimentos/default.png'; // Usar a imagem padrão em caso de erro
+                  }}
+                  onClick={() => openModal(procedure.image ? procedure.image : '/img_procedimentos/default.png')} // Abre o modal com a URL da imagem ou a imagem padrão
                 />
               </td>
             </tr>
