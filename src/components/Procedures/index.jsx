@@ -16,7 +16,7 @@ const Procedures = () => {
   useEffect(() => {
     const fetchProcedures = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/public/procedures');
+        const response = await fetch('https://backende-deploy.onrender.com/api/public/procedures');
         if (!response.ok) {
           throw new Error('Erro ao buscar dados do servidor');
         }
@@ -150,7 +150,7 @@ const Procedures = () => {
               <button onClick={zoomIn}>+</button>
             </div>
           </div>
-        </div>
+        </div>    
       )}
     </div>
   );
