@@ -8,7 +8,7 @@ const Sobre = () => {
         <div className="sobre-text">
           <h2>Sobre Nós</h2>
           <p>
-            Bem-vindo à Last Designer! Aqui somos profissionais que 
+            Bem-vindo à Mirian Designer! Aqui somos profissionais que 
             se especializaram em design criativo, buscamos sempre oferecer as melhores 
             soluções para nossos clientes. Nossos inúmeros 
             atendimentos bem-sucedidos nos deram uma posição de destaque no mercado.
