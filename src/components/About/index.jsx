@@ -8,10 +8,14 @@ const Sobre = () => {
         <div className="sobre-text">
           <h2>Sobre Nós</h2>
           <p>
-            Bem-vindo à Mirian Designer! Aqui somos profissionais que 
-            se especializaram em design criativo, buscamos sempre oferecer as melhores 
-            soluções para nossos clientes. Nossos inúmeros 
-            atendimentos bem-sucedidos nos deram uma posição de destaque no mercado.
+            Olá! Meu nome é Mirian Vasconcelos e 
+            sou especializada em realçar a beleza natural 
+            através do Design de Sobrancelhas, Extensão de Cílios e Epilação. 
+            Com técnicas personalizadas e produtos de alta qualidade, busco oferecer 
+            um atendimento cuidadoso e detalhista, sempre respeitando o estilo e as 
+            necessidades de cada cliente. Se você está procurando um serviço que valorize 
+            sua beleza e faça você se sentir ainda mais confiante, estou à disposição para ajudá-la
+            a alcançar seus objetivos de estética. 
           </p>
           <p>
             Nos comprometemos com a excelência, proporcionando designs inovadores que 
