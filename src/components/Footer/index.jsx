@@ -27,6 +27,11 @@ const Footer = () => {
             <FaMapMarkerAlt /> Endereço: R. Aquilino de Carvalho, Lote 01 Qdra 77, Guaxindiba, Rua do CRÁS, Rua 4, após o viaduto da BR, CEP 24722-250
           </a>
         </p>
+        <p>
+          <a href="https://maps.app.goo.gl/Z8K17WtGBz8fpszHA" target="_blank" rel="noopener noreferrer">
+            <FaMapMarkerAlt /> Endereço: Av. Prefeito Milton Rodrigues da Rocha, 46 - Manilha
+          </a>
+        </p>
       </div>
 
       <div className="footer-developer">

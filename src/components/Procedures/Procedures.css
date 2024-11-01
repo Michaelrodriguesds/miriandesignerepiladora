@@ -1,88 +1,65 @@
-/* Procedimentos Container - Ocupar quase a tela toda */
+/* Container principal */
 .procedures-container {
-  padding: 30px;
-  background-color: #f5f5f5;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 95%;
-  height: 90vh;
-  margin: 20px auto;
-  font-family: 'Arial', sans-serif;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* Título estilizado */
+/* Título */
 .procedures-container h2 {
-  font-size: 28px;
-  color: #333;
   text-align: center;
+  font-size: 24px;
   margin-bottom: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  color: #333;
 }
 
-/* Estilo da tabela de procedimentos */
-.procedures-table {
-  width: 100%;
-  border-collapse: collapse;
+/* Grade de procedimentos */
+.procedures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+/* Cartão de procedimento */
+.procedure-card {
   background-color: #fff;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-}
-
-.procedures-table th,
-.procedures-table td {
-  border: 1px solid #ddd;
+  transition: transform 0.2s;
   padding: 10px;
   text-align: center;
-  font-size: 16px;
-  color: #555;
 }
 
-.procedures-table th {
-  background-color: #4CAF50;
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 0.5px;
+.procedure-card:hover {
+  transform: translateY(-3px);
 }
 
-.procedures-table tr {
-  transition: background-color 0.3s;
-}
-
-.procedures-table tr:hover {
-  background-color: #f1f1f1;
-}
-
+/* Imagem do procedimento */
 .procedure-image {
-  width: 60px;
-  height: auto;
-  border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 0 auto 10px;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 auto;
 }
 
-.procedures-table td {
-  padding: 10px 10px;
-  text-align: center;
+/* Detalhes do procedimento */
+.procedure-details h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 8px 0;
 }
 
-.center-text {
-  text-align: center;
-  font-style: italic;
-  color: #777;
+.procedure-details p {
+  font-size: 13px;
+  color: #666;
+  margin: 5px 0;
 }
 
-/* Estilo do Modal */
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -91,102 +68,34 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 9999;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 /* Conteúdo do modal */
 .modal-content {
   position: relative;
-  max-width: 80%;
-  max-height: 80%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
 }
 
-/* Estilo da imagem dentro do modal */
+/* Imagem dentro do modal */
 .modal-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
-  transform: scale(1) translate(0, 0);
+  border-radius: 8px;
   transition: transform 0.3s ease;
-  cursor: grab;
+  object-fit: contain;
 }
 
-/* Botão de fechar no canto superior direito */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #ff4d4d;
-  border: none;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.close-button:hover {
-  background-color: #ff1a1a;
-}
-
-/* Zoom Controls */
-.zoom-controls {
-  position: absolute;
-  bottom: 10px;
-  display: flex;
-  gap: 10px;
-}
-
-.zoom-controls button {
-  background-color: #333; /* Fundo mais escuro para melhor visibilidade */
-  color: #fff; /* Cor do texto branca */
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.zoom-controls button:hover {
-  background-color: #555; /* Cor mais clara ao passar o mouse */
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-  .procedures-container {
-    padding: 20px;
-    height: auto;
-  }
-
-  .procedures-table th,
-  .procedures-table td {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .modal-content {
-    max-width: 90%;
-    max-height: 90%;
-  }
-
-  .procedure-image {
-    width: 50px;
-  }
-}
-
-/* Botão de fechar no canto superior direito */
+/* Botão de fechar */
 .close-button {
   position: absolute;
   top: 10px;
@@ -196,16 +105,75 @@
   color: white;
   font-size: 24px;
   font-weight: bold;
-  padding: 10px;
+  padding: 5px;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.2s;
-  z-index: 10000; /* Garante que o botão de fechar fique acima de tudo */
+  z-index: 10000;
 }
 
 .close-button:hover {
   background-color: #ff1a1a;
 }
 
+/* Controles de zoom */
+.zoom-controls {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
 
+.zoom-controls button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
+.zoom-controls button:hover {
+  background-color: #555;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .procedures-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .procedures-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .procedure-card {
+    padding: 8px;
+  }
+
+  .procedure-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .procedure-details h3 {
+    font-size: 14px;
+  }
+
+  .procedure-details p {
+    font-size: 12px;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+    max-height: 75vh;
+  }
+
+  .zoom-controls button {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
