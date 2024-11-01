@@ -1,88 +1,22 @@
-import React, { useState, useEffect } from 'react'; 
-import './header.css'; // O CSS global deve incluir os estilos para os botões
-import logo from '../../assets/logo.png'; 
-import { FaArrowUp, FaWhatsapp } from 'react-icons/fa'; // Ícones
+import React from "react";
+import "./about.css"; 
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
-
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleScrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false); // Fecha o menu após clicar
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Mostrar ou esconder os botões dependendo da posição de rolagem
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+const Sobre = () => {
   return (
-    <header className="header">
-      <div className="header-content">
-        {/* Ao clicar no logo ou título, rolar para o topo */}
-        <img
-          src={logo}
-          alt="Logo"
-          className="logo"
-          onClick={() => handleScrollToSection('top')}
-        />
-        <h1 className="title" onClick={() => handleScrollToSection('top')}>
-          Designer Mirian
-        </h1>
-
-        <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-          <ul className="nav-links">
-            <li><a onClick={() => handleScrollToSection('about')}>Sobre</a></li>
-            <li><a onClick={() => handleScrollToSection('gallery')}>Galeria</a></li>
-            <li><a onClick={() => handleScrollToSection('procedures')}>Procedimentos</a></li>
-            <li><a onClick={() => handleScrollToSection('offers')}>Ofertas</a></li>
-            <li><a onClick={() => handleScrollToSection('messages')}>Recados</a></li>
-            <li><a onClick={() => handleScrollToSection('footer')}>Contato</a></li> 
-          </ul>
-        </nav>
-        <button className="menu-toggle" onClick={handleMenuToggle}>
-          ☰
-        </button>
+    <div id="about" className="sobre-section">
+      <div className="sobre-content">
+        <div className="sobre-text">
+          <h2>Sobre Nós</h2>
+          <p>
+          Olá! Meu nome é Mirian Vasconcelos e sou especializada em realçar a beleza natural através do Design de Sobrancelhas, Extensão de Cílios e Epilação. Com técnicas personalizadas e produtos de alta qualidade, busco oferecer um atendimento cuidadoso e detalhista, sempre respeitando o estilo e as necessidades de cada cliente. Se você está procurando um serviço que valorize sua beleza e faça você se sentir ainda mais confiante, estou à disposição para ajudá-la a alcançar seus objetivos de estética.
+          </p>
+          <p>
+          Nos comprometemos com a excelência, proporcionando designs inovadores que refletem as necessidades únicas de cada cliente. Explore nossa galeria, veja nossos procedimentos e ofertas, e sinta-se à vontade para nos deixar um recado!
+          </p>
+        </div>
       </div>
-
-      {/* Botão de scroll para o topo, exibido apenas se showScrollButton for true */}
-      {showScrollButton && (
-        <button className="scroll-to-top show" onClick={scrollToTop}>
-          <FaArrowUp />
-        </button>
-      )}
-
-      {/* Botão do WhatsApp, exibido apenas se showScrollButton for true */}
-      {showScrollButton && (
-        <button className="whatsapp-button show" onClick={() => window.open('https://wa.me/5521970259065', '_blank')}>
-          <FaWhatsapp />
-        </button>
-      )}
-    </header>
+    </div>
   );
 };
 
-export default Header;
+export default Sobre;

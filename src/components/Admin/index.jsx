@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Admin.css'; // Importa o CSS para o estilo da página
@@ -13,9 +13,8 @@ const Admin = () => {
   const [procedures, setProcedures] = useState([]);
   const [messages, setMessages] = useState([]);
 
-  const [newOffer, setNewOffer] = useState({ title: '', description: '', price: '', expiresAt: '' });
+  const [newOffer, setNewOffer] = useState({ nome: '', descricao: '', valor: '', data_inicio: '', data_fim: '', imagem: '' });
   const [newProcedure, setNewProcedure] = useState({ name: '', metadata: '', price: '', imageUrl: '' });
-
   const [newMessage, setNewMessage] = useState({ name: '', content: '', stars: '' });
 
   const REFRESH_INTERVAL = 5000; // Definindo intervalo de 5 segundos
@@ -27,7 +26,7 @@ const Admin = () => {
       return;
     }
     try {
-      const response = await fetch('https://backende-deploy.onrender.com/api/admin/login', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/login', {  // Alterado para o novo endpoint
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -64,17 +63,17 @@ const Admin = () => {
       const token = localStorage.getItem('token');
       const headers = { 'Authorization': `Bearer ${token}` };
 
-      const offersRes = await fetch('https://backende-deploy.onrender.com/api/public/offers', { headers });
+      const offersRes = await fetch('https://backende-deploy.onrender.com/api/public/offers', { headers }); // Alterado para o novo endpoint
       if (!offersRes.ok) throw new Error('Erro ao buscar ofertas');
       const offersData = await offersRes.json();
       setOffers(offersData);
 
-      const proceduresRes = await fetch('https://backende-deploy.onrender.com/api/public/procedures', { headers });
+      const proceduresRes = await fetch('https://backende-deploy.onrender.com/api/public/procedures', { headers }); // Alterado para o novo endpoint
       if (!proceduresRes.ok) throw new Error('Erro ao buscar procedimentos');
       const proceduresData = await proceduresRes.json();
       setProcedures(proceduresData);
 
-      const messagesRes = await fetch('https://backende-deploy.onrender.com/api/admin/messages', { headers });
+      const messagesRes = await fetch('https://backende-deploy.onrender.com/api/admin/messages', { headers }); // Alterado para o novo endpoint
       if (!messagesRes.ok) throw new Error('Erro ao buscar mensagens');
       const messagesData = await messagesRes.json();
       setMessages(messagesData);
@@ -92,14 +91,14 @@ const Admin = () => {
     };
 
     try {
-      const response = await fetch('https://backende-deploy.onrender.com/api/admin/offer', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/offer', { // Alterado para o novo endpoint
         method: 'POST',
         headers: headers,
         body: JSON.stringify(newOffer),
       });
       if (response.ok) {
         toast.success('Oferta adicionada com sucesso!');
-        setNewOffer({ title: '', description: '', price: '', expiresAt: '' });
+        setNewOffer({ nome: '', descricao: '', valor: '', data_inicio: '', data_fim: '', imagem: '' });
         fetchAllData(); // Refresh data
       } else {
         throw new Error('Erro ao adicionar oferta');
@@ -114,7 +113,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/offer/${id}`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/offer/${id}`, { // Alterado para o novo endpoint
         method: 'DELETE',
         headers: headers,
       });
@@ -138,14 +137,16 @@ const Admin = () => {
       'Content-Type': 'application/json'
     };
 
-    // Cria um novo objeto sem a URL da imagem se ela estiver vazia
+    // Cria um novo objeto com os dados do procedimento
     const procedureData = { 
-      ...newProcedure, 
-      imageUrl: newProcedure.imageUrl || undefined // Usa undefined se imageUrl estiver vazio
+      name: newProcedure.name, 
+      metadata: newProcedure.metadata, 
+      price: newProcedure.price, 
+      image: newProcedure.imageUrl || undefined // Agora usa 'image' corretamente
     };
 
     try {
-      const response = await fetch('https://backende-deploy.onrender.com/api/admin/procedure', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/procedure', { // Alterado para o novo endpoint
         method: 'POST',
         headers: headers,
         body: JSON.stringify(procedureData), // Envia os dados do procedimento
@@ -167,7 +168,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/procedure/${id}`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/procedure/${id}`, { // Alterado para o novo endpoint
         method: 'DELETE',
         headers: headers,
       });
@@ -188,7 +189,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/message/${id}/approve`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/message/${id}/approve`, { // Alterado para o novo endpoint
         method: 'PUT',
         headers: headers,
       });
@@ -212,7 +213,7 @@ const Admin = () => {
     const headers = { 'Authorization': `Bearer ${token}` };
 
     try {
-      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/message/${id}`, {
+      const response = await fetch(`https://backende-deploy.onrender.com/api/admin/message/${id}`, { // Alterado para o novo endpoint
         method: 'DELETE',
         headers: headers,
       });
@@ -232,21 +233,21 @@ const Admin = () => {
     const token = localStorage.getItem('token');
     const headers = { 
       'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json' 
     };
 
     try {
-      const response = await fetch('https://backende-deploy.onrender.com/api/admin/message', {
+      const response = await fetch('https://backende-deploy.onrender.com/api/admin/message', { // Alterado para o novo endpoint
         method: 'POST',
         headers: headers,
         body: JSON.stringify(newMessage),
       });
       if (response.ok) {
         toast.success('Mensagem enviada com sucesso!');
-        setNewMessage({ name: '', content: '', stars: '' });
-        fetchAllData(); // Atualiza a lista de mensagens
+        setNewMessage({ name: '', content: '', stars: '' }); // Reseta o estado
+        fetchAllData(); // Refresh data
       } else {
-        throw new Error('Erro ao enviar mensagem');
+        throw new Error('Erro ao adicionar mensagem');
       }
     } catch (error) {
       toast.error(error.message);
@@ -258,78 +259,77 @@ const Admin = () => {
       <ToastContainer />
       {!isAuthenticated ? (
         <form onSubmit={handleLogin}>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Senha" required />
-          <button type="submit">Login</button>
+          <h1>Login Admin</h1>
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <button type="submit">Entrar</button>
         </form>
       ) : (
-        <>
-          <h1>Bem-vindo, {adminName}</h1>
+        <div>
+          <h1>Bem-vindo, {adminName}!</h1>
 
-          {/* Adicionando Ofertas */}
           <h2>Adicionar Oferta</h2>
           <form onSubmit={handleAddOffer}>
-            <input type="text" value={newOffer.title} onChange={(e) => setNewOffer({ ...newOffer, title: e.target.value })} placeholder="Título" required />
-            <input type="text" value={newOffer.description} onChange={(e) => setNewOffer({ ...newOffer, description: e.target.value })} placeholder="Descrição" required />
-            <input type="number" value={newOffer.price} onChange={(e) => setNewOffer({ ...newOffer, price: e.target.value })} placeholder="Preço" required />
-            <input type="date" value={newOffer.expiresAt} onChange={(e) => setNewOffer({ ...newOffer, expiresAt: e.target.value })} placeholder="Expira em" required />
+            <input type="text" placeholder="Nome" value={newOffer.nome} onChange={(e) => setNewOffer({ ...newOffer, nome: e.target.value })} required />
+            <input type="text" placeholder="Descrição" value={newOffer.descricao} onChange={(e) => setNewOffer({ ...newOffer, descricao: e.target.value })} />
+            <input type="number" placeholder="Valor" value={newOffer.valor} onChange={(e) => setNewOffer({ ...newOffer, valor: e.target.value })} />
+            <input type="date" placeholder="Data de Início" value={newOffer.data_inicio} onChange={(e) => setNewOffer({ ...newOffer, data_inicio: e.target.value })} />
+            <input type="date" placeholder="Data de Fim" value={newOffer.data_fim} onChange={(e) => setNewOffer({ ...newOffer, data_fim: e.target.value })} />
+            <input type="text" placeholder="URL da Imagem" value={newOffer.imagem} onChange={(e) => setNewOffer({ ...newOffer, imagem: e.target.value })} />
             <button type="submit">Adicionar Oferta</button>
           </form>
 
-          {/* Adicionando Procedimentos */}
-          <h2>Adicionar Procedimento</h2>
-          <form onSubmit={handleAddProcedure}>
-            <input type="text" value={newProcedure.name} onChange={(e) => setNewProcedure({ ...newProcedure, name: e.target.value })} placeholder="Nome" required />
-            <input type="text" value={newProcedure.metadata} onChange={(e) => setNewProcedure({ ...newProcedure, metadata: e.target.value })} placeholder="Metadados" required />
-            <input type="number" value={newProcedure.price} onChange={(e) => setNewProcedure({ ...newProcedure, price: e.target.value })} placeholder="Preço" required />
-            <input type="text" value={newProcedure.imageUrl} onChange={(e) => setNewProcedure({ ...newProcedure, imageUrl: e.target.value })} placeholder="URL da Imagem (opcional)" />
-            <button type="submit">Adicionar Procedimento</button>
-          </form>
-
-          {/* Listando Ofertas */}
           <h2>Ofertas</h2>
           <ul>
             {offers.map(offer => (
               <li key={offer._id}>
-                <strong>{offer.title}</strong> - {offer.description} - R$ {offer.price}
+                <h3>{offer.nome} - {offer.valor}</h3>
+                <p>{offer.descricao}</p>
+                <p>Início: {new Date(offer.data_inicio).toLocaleDateString()} - Fim: {new Date(offer.data_fim).toLocaleDateString()}</p>
+                <img src={offer.imagem} alt={offer.nome} width="100" />
                 <button onClick={() => handleDeleteOffer(offer._id)}>Excluir</button>
               </li>
             ))}
           </ul>
 
-          {/* Listando Procedimentos */}
+          <h2>Adicionar Procedimento</h2>
+          <form onSubmit={handleAddProcedure}>
+            <input type="text" placeholder="Nome" value={newProcedure.name} onChange={(e) => setNewProcedure({ ...newProcedure, name: e.target.value })} />
+            <input type="text" placeholder="Metadata" value={newProcedure.metadata} onChange={(e) => setNewProcedure({ ...newProcedure, metadata: e.target.value })} />
+            <input type="text" placeholder="Preço" value={newProcedure.price} onChange={(e) => setNewProcedure({ ...newProcedure, price: e.target.value })} />
+            <input type="text" placeholder="URL da Imagem" value={newProcedure.imageUrl} onChange={(e) => setNewProcedure({ ...newProcedure, imageUrl: e.target.value })} />
+            <button type="submit">Adicionar Procedimento</button>
+          </form>
+
           <h2>Procedimentos</h2>
           <ul>
             {procedures.map(proc => (
               <li key={proc._id}>
-                <strong>{proc.name}</strong> - {proc.metadata} - R$ {proc.price} 
-                {proc.imageUrl && <img src={proc.imageUrl} alt={proc.name} style={{ width: '100px', height: '100px' }} />}
+                <h3>{proc.name} - {proc.price}</h3>
                 <button onClick={() => handleDeleteProcedure(proc._id)}>Excluir</button>
               </li>
             ))}
           </ul>
 
-          {/* Listando Mensagens */}
+          <h2>Gerenciar Mensagens</h2>
+          <form onSubmit={handleAddMessage}>
+            <input type="text" placeholder="Nome" value={newMessage.name} onChange={(e) => setNewMessage({ ...newMessage, name: e.target.value })} />
+            <input type="text" placeholder="Conteúdo" value={newMessage.content} onChange={(e) => setNewMessage({ ...newMessage, content: e.target.value })} />
+            <input type="number" placeholder="Estrelas" value={newMessage.stars} onChange={(e) => setNewMessage({ ...newMessage, stars: e.target.value })} />
+            <button type="submit">Enviar Mensagem</button>
+          </form>
+
           <h2>Mensagens</h2>
           <ul>
             {messages.map(msg => (
               <li key={msg._id}>
-                <strong>{msg.name}</strong> - {msg.content} - {msg.stars} estrelas
-                <button onClick={() => handleApproveMessage(msg._id)}>Aprovar</button>
+                <p>{msg.name}: {msg.content} ({msg.stars} estrelas)</p>
+                {!msg.approved && <button onClick={() => handleApproveMessage(msg._id)}>Aprovar</button>}
                 <button onClick={() => handleDeleteMessage(msg._id)}>Excluir</button>
               </li>
             ))}
           </ul>
-
-          {/* Enviando Mensagens */}
-          <h2>Enviar Mensagem</h2>
-          <form onSubmit={handleAddMessage}>
-            <input type="text" value={newMessage.name} onChange={(e) => setNewMessage({ ...newMessage, name: e.target.value })} placeholder="Seu Nome" required />
-            <input type="text" value={newMessage.content} onChange={(e) => setNewMessage({ ...newMessage, content: e.target.value })} placeholder="Conteúdo" required />
-            <input type="number" value={newMessage.stars} onChange={(e) => setNewMessage({ ...newMessage, stars: e.target.value })} placeholder="Estrelas (1 a 5)" required />
-            <button type="submit">Enviar Mensagem</button>
-          </form>
-        </>
+        </div>
       )}
     </div>
   );

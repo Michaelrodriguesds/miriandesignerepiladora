@@ -1,96 +1,103 @@
 import React, { useEffect, useState } from 'react';
-import './Offers.css';
-import { FaBolt, FaClock } from 'react-icons/fa'; // Importando ícones
+import './Offers.css'; // Importa o CSS para estilos
+import { FaBolt } from 'react-icons/fa'; // Importando ícone de relâmpago
 
-const Offers = () => {
-  const [offers, setOffers] = useState([]);
+const FlashOffer = () => {
+  const [offers, setOffers] = useState([]); // Altera para um array de ofertas
+  const [loading, setLoading] = useState(true);
+  const [selectedOffer, setSelectedOffer] = useState(null); // Para a oferta selecionada no modal
 
-  // Função para buscar ofertas
-  const fetchOffers = async () => {
+  // Função para buscar as ofertas
+  const fetchFlashOffer = async () => {
     try {
-      const response = await fetch('https://backende-deploy.onrender.com/api/public/offers');
+      const response = await fetch('https://backende-deploy.onrender.com/api/public/offers'); // URL do endpoint
       if (!response.ok) {
-        throw new Error('Erro ao buscar ofertas');
+        throw new Error('Erro ao buscar as ofertas relâmpago');
       }
       const data = await response.json();
-      setOffers(data);
+      console.log(data); // Para verificar a estrutura do dado
+      setOffers(data); // Armazena todas as ofertas
     } catch (error) {
       console.error('Erro ao buscar ofertas:', error);
+    } finally {
+      setLoading(false);
     }
-  };
-
-  // Função para calcular o tempo restante (sem exibir segundos)
-  const calculateTimeLeft = (expiresAt) => {
-    const now = new Date();
-    const expirationDate = new Date(expiresAt);
-    const timeLeft = expirationDate - now;
-
-    if (timeLeft <= 0) {
-      return 'Expirado';
-    }
-
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-
-    return `${days}d ${hours}h ${minutes}m`;
   };
 
   useEffect(() => {
-    fetchOffers(); // Busca as ofertas ao carregar a página
-
-    const interval = setInterval(() => {
-      // Atualiza o tempo restante a cada minuto
-      setOffers((prevOffers) =>
-        prevOffers.map((offer) => ({
-          ...offer,
-          timeLeft: calculateTimeLeft(offer.expiresAt),
-        }))
-      );
-    }, 60000); // Atualiza a cada minuto
-
-    // Atualiza a página a cada 5 minutos
-    const pageRefreshInterval = setInterval(() => {
-      window.location.reload(); // Recarrega a página para buscar novas ofertas
-    }, 300000); // 300000 ms = 5 minutos
-
-    return () => {
-      clearInterval(interval); // Limpa o intervalo de atualização
-      clearInterval(pageRefreshInterval); // Limpa o intervalo de recarregamento da página
-    };
+    fetchFlashOffer(); // Busca as ofertas ao carregar a página
   }, []);
 
+  // Função para abrir o modal com a oferta selecionada
+  const openModal = (offer) => {
+    setSelectedOffer(offer);
+  };
+
+  // Função para fechar o modal
+  const closeModal = () => {
+    setSelectedOffer(null);
+  };
+
+  if (loading) return <div className="loading">Carregando...</div>;
+
+  if (offers.length === 0) return <div className="no-offer">Não há ofertas relâmpago disponíveis.</div>;
+
   return (
-    <div id="offers" className="offers-container">
-      <h2 className="offers-title">Ofertas Relâmpago</h2>
-      {offers.length > 0 ? (
-        offers.map((offer) => {
-          const timeLeft = calculateTimeLeft(offer.expiresAt);
-          const isFlashSale = timeLeft !== 'Expirado' && (new Date(offer.expiresAt) - new Date()) < 60000; // Menos de 1 minuto
-          return (
-            <div
-              key={offer._id}
-              className={`offer-card ${isFlashSale ? 'flash-sale' : ''}`}
-            >
-              <div className="offer-info">
-                <h3 className="offer-title">{offer.title}</h3>
-                <p className="offer-price">Valor: R$ {offer.price.toFixed(2)}</p>
-              </div>
-              <div className="offer-expiration-container">
-                <FaClock className="clock-icon" />
-                <p className={`offer-expiration ${isFlashSale ? 'flash-sale-time' : ''}`}>
-                  Expira em: {timeLeft}
-                </p>
-                {isFlashSale && <FaBolt className="bolt-icon" />}
+    <div id="offers" className="flash-offer-container">
+      <h2 className="flash-offer-title">
+        ⚡ Ofertas Relâmpago: Não Perca Essa Chance! ⚡
+      </h2>
+      <div className="flash-offer-list">
+        {offers.map(offer => (
+          offer.nome && ( // Verifica se o nome da oferta está presente
+            <div className="flash-offer-card" key={offer._id} onClick={() => openModal(offer)}>
+              <img
+                src={offer.imagem || '/img_ofertas/default.png'} 
+                alt={offer.nome}
+                className="flash-offer-image animated-image"
+              />
+              <div className="flash-offer-info">
+                <h3 className="flash-offer-subtitle">{offer.nome}</h3>
+                
+                {/* Renderiza a data de início apenas se existir */}
+                {offer.data_inicio && (
+                  <p className="flash-offer-description">
+                    Início: {new Date(offer.data_inicio).toLocaleDateString()}
+                  </p>
+                )}
+
+                {/* Renderiza a data de fim apenas se existir */}
+                {offer.data_fim && (
+                  <p className="flash-offer-description">
+                    Fim: {new Date(offer.data_fim).toLocaleDateString()}
+                  </p>
+                )}
+
+                {/* Renderiza o valor apenas se existir e for maior que zero */}
+                {offer.valor != null && offer.valor > 0 && (
+                  <p className="flash-offer-price">Apenas R$ {offer.valor.toFixed(2)}</p>
+                )}
               </div>
             </div>
-          );
-        })
-      ) : (
-        <p className="no-offers">Não há ofertas disponíveis.</p>
+          )
+        ))}
+      </div>
+
+      {/* Modal para exibir a imagem em tela cheia */}
+      {selectedOffer && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedOffer.imagem} alt={selectedOffer.nome} className="modal-image" />
+            <button className="modal-close-button" onClick={closeModal}>Fechar</button>
+          </div>
+        </div>
       )}
+      
+      <div className="flash-offer-bolt">
+        <FaBolt className="bolt-icon" />
+      </div>
     </div>
   );
 };
 
-export default Offers;
+export default FlashOffer;
