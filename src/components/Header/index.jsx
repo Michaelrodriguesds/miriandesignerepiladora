@@ -1,22 +1,88 @@
-import React from "react";
-import "./about.css"; 
+import React, { useState, useEffect } from 'react'; 
+import './header.css';
+import logo from '../../assets/logo.png'; // Substitua pelo caminho correto da sua imagem
+import { FaArrowUp } from 'react-icons/fa'; // Ícone de seta para cima
 
-const Sobre = () => {
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  let scrollTimer = null;
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Função para rolar suavemente para a seção desejada
+  const handleScrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false); // Fecha o menu após clicar
+    }
+  };
+
+  // Função para rolar para o topo da página
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Monitora o scroll para exibir ou ocultar o botão
+  const handleScroll = () => {
+    if (scrollTimer) {
+      clearTimeout(scrollTimer);
+    }
+
+    setShowScrollButton(false); // Esconde o botão enquanto o usuário está rolando
+
+    scrollTimer = setTimeout(() => {
+      setShowScrollButton(true); // Mostra o botão após parar de rolar
+    }, 1500); // Mostra o botão após 1.5 segundos de inatividade
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div id="about" className="sobre-section">
-      <div className="sobre-content">
-        <div className="sobre-text">
-          <h2>Sobre Nós</h2>
-          <p>
-          Olá! Meu nome é Mirian Vasconcelos e sou especializada em realçar a beleza natural através do Design de Sobrancelhas, Extensão de Cílios e Epilação. Com técnicas personalizadas e produtos de alta qualidade, busco oferecer um atendimento cuidadoso e detalhista, sempre respeitando o estilo e as necessidades de cada cliente. Se você está procurando um serviço que valorize sua beleza e faça você se sentir ainda mais confiante, estou à disposição para ajudá-la a alcançar seus objetivos de estética.
-          </p>
-          <p>
-          Nos comprometemos com a excelência, proporcionando designs inovadores que refletem as necessidades únicas de cada cliente. Explore nossa galeria, veja nossos procedimentos e ofertas, e sinta-se à vontade para nos deixar um recado!
-          </p>
-        </div>
+    <header className="header">
+      <div className="header-content">
+        {/* Ao clicar no logo ou título, rolar para o topo */}
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
+          onClick={() => handleScrollToSection('top')}
+        />
+        <h1 className="title" onClick={() => handleScrollToSection('top')}>
+          Last Designer
+        </h1>
+
+        <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+          <ul className="nav-links">
+            <li><a onClick={() => handleScrollToSection('about')}>Sobre</a></li>
+            <li><a onClick={() => handleScrollToSection('gallery')}>Galeria</a></li>
+            <li><a onClick={() => handleScrollToSection('procedures')}>Procedimentos</a></li>
+            <li><a onClick={() => handleScrollToSection('offers')}>Ofertas</a></li>
+            <li><a onClick={() => handleScrollToSection('messages')}>Recados</a></li>
+            <li><a onClick={() => handleScrollToSection('footer')}>Contato</a></li> {/* Contato rola para o footer */}
+          </ul>
+        </nav>
+        <button className="menu-toggle" onClick={handleMenuToggle}>
+          ☰
+        </button>
       </div>
-    </div>
+
+      {/* Botão de scroll para o topo */}
+      {showScrollButton && (
+        <button className="scroll-to-top" onClick={scrollToTop}>
+          <FaArrowUp />
+        </button>
+      )}
+    </header>
   );
 };
 
-export default Sobre;
+export default Header;
