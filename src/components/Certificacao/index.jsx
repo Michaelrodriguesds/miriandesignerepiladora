@@ -38,7 +38,7 @@ const Certificacao = () => {
 
   return (
     <div className="certificado-section">
-      <h3 className="certificado-title">Nossas Certificações</h3>
+      <h3 className="certificado-title">Minhas Certificações</h3>
       <div className="certificados">
         <img
           src={certCL}
