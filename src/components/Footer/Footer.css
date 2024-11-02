@@ -1,5 +1,3 @@
-/* Footer.css */
-
 .footer-container {
   background-color: #222; /* Fundo escuro suave */
   color: #ccc; /* Texto mais claro para contraste */
@@ -78,4 +76,15 @@
   .footer-info, .footer-contact, .footer-developer {
     margin: 5px 0;
   }
+}
+
+/* Estilo do botão de WhatsApp */
+.whatsapp-button {
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+/* Efeito hover do botão de WhatsApp */
+.whatsapp-button:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
 }
