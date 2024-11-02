@@ -57,7 +57,7 @@ const Header = () => {
           onClick={() => handleScrollToSection('top')}
         />
         <h1 className="title" onClick={() => handleScrollToSection('top')}>
-          Last Designer
+           Designer Mirian
         </h1>
 
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
