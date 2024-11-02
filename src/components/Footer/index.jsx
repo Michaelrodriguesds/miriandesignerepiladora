@@ -1,16 +1,46 @@
-import React from 'react';
-import './Footer.css';
-import { FaInstagram, FaLinkedin, FaWhatsapp, FaUserShield, FaMapMarkerAlt } from 'react-icons/fa'; // Ícones
+// Importa o React e as bibliotecas necessárias
+import React, { useState, useEffect } from 'react';
+import './Footer.css'; // Importa o arquivo de estilos para o componente Footer
+import { FaInstagram, FaLinkedin, FaWhatsapp, FaUserShield, FaMapMarkerAlt } from 'react-icons/fa'; // Ícones de redes sociais e outras funções
 
 const Footer = () => {
+  // Estado para controlar a visibilidade do botão de WhatsApp
+  const [showWhatsappButton, setShowWhatsappButton] = useState(false);
+
+  // useEffect para monitorar o scroll da página e definir a visibilidade do botão de WhatsApp
+  useEffect(() => {
+    let timeoutId;
+
+    const handleScroll = () => {
+      // Esconde o botão quando a página está sendo rolada
+      setShowWhatsappButton(false);
+      // Define um atraso para exibir o botão novamente após o scroll parar
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setShowWhatsappButton(true); // Exibe o botão após uma pausa no scroll
+      }, 1000);
+    };
+
+    // Adiciona o ouvinte de evento para o scroll
+    window.addEventListener('scroll', handleScroll);
+
+    // Limpeza: remove o ouvinte de evento ao desmontar o componente
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <footer id="footer" className="footer-container">
+      {/* Link para a área administrativa com ícone de escudo */}
       <div className="footer-info">
         <a href="/admin" className="admin-link">
           <FaUserShield size={14} /> Área Administrativa
         </a>
       </div>
 
+      {/* Informações de contato e links para redes sociais */}
       <div className="footer-contact">
         <p>
           <a href="https://wa.me/5521970259065" target="_blank" rel="noopener noreferrer">
@@ -34,6 +64,7 @@ const Footer = () => {
         </p>
       </div>
 
+      {/* Link para o perfil do desenvolvedor no LinkedIn */}
       <div className="footer-developer">
         <p>
           <a href="https://www.linkedin.com/in/michael-rodrigues-b741a1104/" target="_blank" rel="noopener noreferrer">
@@ -42,9 +73,33 @@ const Footer = () => {
         </p>
       </div>
 
+      {/* Direitos autorais */}
       <div className="footer-rights">
         <p>© 2024 Todos os direitos reservados</p>
       </div>
+
+      {/* Botão de WhatsApp com visibilidade condicional */}
+      {showWhatsappButton && (
+        <a
+          href="https://wa.me/5521970259065"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-button"
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            backgroundColor: '#25D366',
+            color: 'white',
+            borderRadius: '50%',
+            padding: '15px',
+            fontSize: '24px',
+            boxShadow: '0px 4px 10px rgba(0,0,0,0.3)',
+          }}
+        >
+          <FaWhatsapp />
+        </a>
+      )}
     </footer>
   );
 };
