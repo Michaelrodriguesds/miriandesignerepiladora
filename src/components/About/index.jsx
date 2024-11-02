@@ -6,7 +6,7 @@ const About = () => {
     <section id="about"  className="sobre-section">
       <div className="sobre-content">
         <div className="sobre-text">
-          <h2>Sobre Nós</h2>
+          <h2>Sobre Mim</h2>
           <p>
             Olá! Meu nome é Mirian Vasconcelos e sou especializada em realçar a beleza natural
              através do Design de Sobrancelhas, Extensão de Cílios e Epilação.
