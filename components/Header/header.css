@@ -1,0 +1,60 @@
+/* Cabeçalho preto do cordel: título grande em Passion One, centralizado */
+.site-header {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.site-header .logo {
+  margin-top: 36px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+}
+
+.site-header h1 {
+  padding-top: 14px;
+  font-variant: small-caps;
+  font-family: var(--fonte2);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  line-height: 1.1;
+}
+
+.site-header .tagline {
+  padding: 6px 16px 22px;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 26px;
+  list-style: none;
+  padding: 0 16px 32px;
+}
+
+.site-header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.site-header a:hover {
+  text-decoration: underline;
+}
+
+/* Primeira faixa de foto (apresentação) */
+#imag01 {
+  background-image: url('/images/cl2.jpeg');
+  background-position: center;
+}
+
+#imag01 .box {
+  margin-bottom: 1.2em;
+}
+
+#imag01 p.box {
+  font-size: clamp(1.4rem, 3.6vw, 2.8rem);
+  line-height: 1.8em;
+}

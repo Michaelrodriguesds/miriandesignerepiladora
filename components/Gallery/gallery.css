@@ -1,0 +1,29 @@
+/* Segunda faixa de foto fixa (igual à #imag02 do cordel) */
+#gallery {
+  background-image: url('/images/sobre_2.jpg');
+  background-position: center top;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 6px solid white;
+  box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.5);
+  cursor: zoom-in;
+  overflow: hidden;
+  background: white;
+}
+
+.gallery-img {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.gallery-item:hover .gallery-img {
+  transform: scale(1.05);
+}

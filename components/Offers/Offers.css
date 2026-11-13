@@ -1,0 +1,62 @@
+/* Terceira faixa de foto fixa */
+#offers {
+  background-image: url('/images/cl3.jpeg');
+  background-position: center;
+}
+
+.no-offer {
+  font-family: var(--fonte1);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.flash-offer-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.flash-offer-card {
+  background: white;
+  color: black;
+  border: 4px solid white;
+  box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  line-height: 1.4;
+  text-shadow: none;
+  transition: transform 0.15s ease;
+}
+.flash-offer-card:hover {
+  transform: translateY(-4px);
+}
+
+.flash-offer-image {
+  display: block;
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-bottom: 4px solid black;
+}
+
+.flash-offer-info {
+  padding: 14px;
+}
+
+.flash-offer-subtitle {
+  font-family: var(--fonte3);
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+}
+
+.flash-offer-description {
+  font-family: var(--fonte1);
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.flash-offer-price {
+  font-family: var(--fonte2);
+  font-size: 1.9rem;
+  margin-top: 8px;
+}

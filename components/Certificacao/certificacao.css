@@ -1,0 +1,15 @@
+.certificados {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.certificado-img {
+  object-fit: cover;
+  cursor: pointer;
+  border: 3px solid black;
+  transition: transform 0.2s ease;
+}
+.certificado-img:hover {
+  transform: translateY(-4px);
+}

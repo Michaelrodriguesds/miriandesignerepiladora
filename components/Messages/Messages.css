@@ -1,0 +1,124 @@
+.messages-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Recado em destaque, como um verso do cordel */
+.message {
+  border-left: 8px solid black;
+  padding-left: 24px;
+}
+.message-text {
+  font-size: clamp(1.3rem, 2.8vw, 2.1rem);
+  line-height: 1.6em;
+  padding-bottom: 0.6em;
+}
+.message-author {
+  font-family: var(--fonte1);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.message-empty {
+  font-family: var(--fonte1);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.stars {
+  letter-spacing: 2px;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.carousel-controls button {
+  font-family: var(--fonte2);
+  font-variant: small-caps;
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  background: white;
+  color: black;
+  border: 3px solid black;
+  cursor: pointer;
+}
+.carousel-controls button:hover {
+  background: black;
+  color: white;
+}
+
+/* Formulário */
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 4px solid black;
+  padding: 24px;
+  font-family: var(--fonte1);
+  font-size: 1rem;
+  line-height: 1.4;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+}
+.message-form h3 {
+  font-family: var(--fonte2);
+  font-variant: small-caps;
+  font-weight: 400;
+  font-size: 1.9rem;
+}
+.message-form input,
+.message-form textarea {
+  border: 2px solid black;
+  padding: 10px 12px;
+  font-family: var(--fonte1);
+  font-size: 1rem;
+  background: white;
+  color: black;
+}
+.message-form textarea {
+  resize: vertical;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.star.unselected {
+  opacity: 0.3;
+}
+
+.btn-send {
+  font-family: var(--fonte2);
+  font-variant: small-caps;
+  font-size: 1.5rem;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: 3px solid black;
+  cursor: pointer;
+}
+.btn-send:hover {
+  background: white;
+  color: black;
+}
+
+.feedback {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+@media (max-width: 860px) {
+  .messages-grid {
+    grid-template-columns: 1fr;
+  }
+}
