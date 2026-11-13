@@ -1,0 +1,81 @@
+/* Tabela de preços: nome + foto pequena + preço, vindos do backend */
+.procedures-sub {
+  font-family: var(--fonte1);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+.procedures-menu {
+  display: flex;
+  flex-direction: column;
+  max-width: 820px;
+}
+
+.procedure-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.procedure-row:first-child {
+  border-top: 2px solid black;
+}
+.procedure-row:hover {
+  background: #f1f1f1;
+}
+
+.procedure-thumb-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border: 3px solid black;
+  overflow: hidden;
+  background: #eee;
+}
+.procedure-thumb {
+  object-fit: cover;
+}
+
+.procedure-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.procedure-info h3 {
+  font-family: var(--fonte3);
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.procedure-info span {
+  font-family: var(--fonte1);
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.procedure-leader {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: 3px dotted black;
+  transform: translateY(-4px);
+}
+
+.procedure-price {
+  font-family: var(--fonte2);
+  font-size: 1.9rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .procedure-leader {
+    display: none;
+  }
+  .procedure-info {
+    flex: 1;
+  }
+}
