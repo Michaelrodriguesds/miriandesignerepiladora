@@ -81,3 +81,92 @@
 .admin-container li img {
   border: 2px solid black;
 }
+
+/* ---- Edição de itens ---- */
+.admin-container textarea {
+  padding: 10px 12px;
+  border: 2px solid black;
+  font-size: 16px;
+  font-family: var(--fonte1);
+  background: white;
+  color: black;
+  resize: vertical;
+}
+
+.admin-container li .item-info {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.admin-container li .item-info p {
+  margin: 2px 0;
+  overflow-wrap: anywhere;
+}
+.admin-container li .status {
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.admin-container .admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-container button.secondary {
+  background: white;
+  color: black;
+}
+.admin-container button.secondary:hover {
+  background: black;
+  color: white;
+}
+.admin-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* item em edição ocupa a linha toda */
+.admin-container li.editing {
+  display: block;
+  background: #f4f4f4;
+}
+.admin-container .edit-form {
+  margin: 12px 0 0;
+}
+.admin-container .edit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.admin-container .edit-form .admin-actions {
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .admin-container {
+    padding: 20px 14px 50px;
+  }
+  .admin-container li {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* os avisos (toasts) ficam dentro do painel: não herdam o estilo dos botões do admin */
+.admin-container .Toastify__toast {
+  font-family: var(--fonte1);
+}
+.admin-container .Toastify__close-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+  font-variant: normal;
+  font-size: 14px;
+}
+.admin-container .Toastify__close-button:hover {
+  background: transparent;
+  color: #000;
+}

@@ -44,12 +44,12 @@ const OffersList = ({ offers, isDemo }) => {
                   <h3 className="flash-offer-subtitle">{offer.nome}</h3>
                   {offer.data_inicio && (
                     <p className="flash-offer-description">
-                      Início: {new Date(offer.data_inicio).toLocaleDateString('pt-BR')}
+                      Início: {new Date(offer.data_inicio).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
                     </p>
                   )}
                   {offer.data_fim && (
                     <p className="flash-offer-description">
-                      Fim: {new Date(offer.data_fim).toLocaleDateString('pt-BR')}
+                      Fim: {new Date(offer.data_fim).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
                     </p>
                   )}
                   {offer.valor != null && offer.valor > 0 && (

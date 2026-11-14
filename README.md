@@ -92,7 +92,7 @@ npm install
 
 # 3. (Opcional) copiar o arquivo de variáveis de ambiente
 cp .env.local.example .env.local
-# Por padrão já aponta para a API em produção (backende-deploy.onrender.com),
+# Por padrão já aponta para a API em produção (backende-deploy-site-mirian.onrender.com),
 # então esse passo só é necessário se você for rodar a API localmente também.
 
 # 4. Rodar em modo desenvolvimento
@@ -121,7 +121,7 @@ deploy gratuito para projetos pessoais):
    substituir o conteúdo do `miriandesignerepiladora` atual).
 2. Na Vercel: **New Project** → selecione o repositório → **Deploy**.
 3. Em **Environment Variables**, adicione:
-   - `NEXT_PUBLIC_API_URL` = `https://backende-deploy.onrender.com`
+   - `NEXT_PUBLIC_API_URL` = `https://backende-deploy-site-mirian.onrender.com`
 4. Pronto — a cada `git push` na branch principal, a Vercel gera um novo
    deploy automaticamente.
 
@@ -178,6 +178,17 @@ mantendo todo o conteúdo e os dados vindos do backend:
 O **comportamento e a lógica de dados não mudaram** em nenhuma versão —
 mesmos endpoints da API, mesmo fluxo de admin. Se o backend não responder, as
 seções mostram conteúdo de exemplo com um aviso.
+
+## 7.1 Painel admin: editar, ocultar e excluir
+
+Em `/admin` (depois do login) cada procedimento, oferta e recado agora tem o botão
+**Editar**: o item vira um formulário com os valores atuais, e ao **Salvar alterações**
+só os campos que você mudou são enviados ao backend (`PUT /api/admin/...`). Recados
+aprovados também têm **Ocultar do site**. **Excluir** pede confirmação. Se a sessão
+(1 hora) expirar, o painel volta para o login em vez de ficar mostrando erros.
+
+As datas das ofertas são exibidas no fuso UTC (como são gravadas), para não aparecer
+um dia antes no horário do Brasil.
 
 ### Correção de robustez (todas as versões a partir desta)
 Os componentes que abrem modais de imagem (Galeria, Certificações, Ofertas,
